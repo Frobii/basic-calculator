@@ -8,6 +8,22 @@
 
 .calcChassis {
     display: flex;
+    flex-direction: column;
     width: 300px;
     height: 600px;
+}
+
+.calcTitle {
+    display: flex;
+    height: 100px;
+}
+
+.calcDisplay {
+   display: flex; 
+   height: 150px;
+}
+
+.calcButtons {
+    display: flex;
+    height: auto;
 }
