@@ -26,13 +26,13 @@
     .calcButtons {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        height: 350px;
     }
 
         .topRow {
             display: flex;
             width: 100%;
-            height: 25%;
+            height: 20%;
         }
             .lightAndClear {
                 display: flex;
@@ -46,7 +46,7 @@
 
         .middleToBottom {
             display: flex;
-            height: 75%;
+            height: 80%;
             flex-direction: row-reverse; 
         }
             .numPadAndEquals {
