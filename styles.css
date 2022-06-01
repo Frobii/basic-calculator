@@ -13,17 +13,48 @@
     height: 600px;
 }
 
-.calcTitle {
-    display: flex;
-    height: 100px;
-}
+    .calcTitle {
+        display: flex;
+        height: 100px;
+    }
 
-.calcDisplay {
-   display: flex; 
-   height: 150px;
-}
+    .calcDisplay {
+    display: flex; 
+    height: 150px;
+    }
 
-.calcButtons {
-    display: flex;
-    height: auto;
-}
+    .calcButtons {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+        .topRow {
+            display: flex;
+            width: 100%;
+            height: 25%;
+        }
+            .lightAndClear {
+                display: flex;
+                width: 50%;
+            }
+
+            .percentAndDivide {
+                display: flex;
+                width: auto;
+            }
+
+        .middleToBottom {
+            display: flex;
+            height: 75%;
+            flex-direction: row-reverse; 
+        }
+            .numPadAndEquals {
+                display: flex;
+                width: auto;
+            }
+
+            .allOtherOperators {
+                display: flex;
+                width: 25%
+            }
