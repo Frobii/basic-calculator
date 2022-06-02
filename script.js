@@ -14,6 +14,10 @@ function divide(num1, num2) {
     return num1 / num2;
 };
 
+function remainder(num1, num2) {
+    return num1 % num2;
+}
+
 function operate(operator, num1, num2) {
     if (operator == add) {
         return add(num1, num2);
@@ -23,5 +27,7 @@ function operate(operator, num1, num2) {
         return multiply(num1, num2); 
     } else if (operator == divide) {
         return divide(num1, num2); 
+    } else if (operator == remainder) {
+        return remainder(num1, num2)
     }
 };
