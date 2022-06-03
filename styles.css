@@ -42,6 +42,10 @@
     height: 150px;
     border: 1px solid black;
     margin: 7.5px;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 52px;
+    font-family: monospace;
 }
 
 .buttonContainer {
@@ -55,7 +59,7 @@
     flex-wrap: wrap; 
 }
 
-.rightButtonSide {
+.operatorSide {
     display: flex;
     flex-direction: column;
 }
