@@ -38,17 +38,11 @@ function inputNumber(number) {
 }
 
 function operatorClear() {
-    if (display.innerText === "+") {
-        display.innerText = "";
-    } else if (display.innerText === "-") {
-        display.innerText = "";
-    } else if (display.innerText === "x") {
-        display.innerText = "";
-    } else if (display.innerText === "/") {
-        display.innerText = "";
-    } else if (display.innerText === "%") {
-        display.innerText = "";
-    }
+    plus.style.background = "#ffffff";
+    take.style.background = "#ffffff";
+    times.style.background = "#ffffff";
+    divided.style.background = "#ffffff";
+    difference.style.background = "#ffffff";
 };
 
 const display = document.querySelector(".calcDisplay")
@@ -80,97 +74,132 @@ const equals = document.querySelector(".equals");
 
 zero.addEventListener("click", () => {
     operatorClear();
+    buttonClearsDisplay();
     inputNumber(0);
 });
 one.addEventListener("click", () => {
     operatorClear();
+    buttonClearsDisplay();
     inputNumber(1);
 });
 two.addEventListener("click", () => {
     operatorClear();
+    buttonClearsDisplay();
     inputNumber(2);
 });
 three.addEventListener("click", () => {
     operatorClear();
+    buttonClearsDisplay();
     inputNumber(3);
 });
 four.addEventListener("click", () => {
     operatorClear();
+    buttonClearsDisplay();
     inputNumber(4);
 });
 five.addEventListener("click", () => {
     operatorClear();
+    buttonClearsDisplay();
     inputNumber(5);
 });
 six.addEventListener("click", () => {
     operatorClear();
+    buttonClearsDisplay();
     inputNumber(6);
 });
 seven.addEventListener("click", () => {
     operatorClear();
+    buttonClearsDisplay();
     inputNumber(7);
 });
 eight.addEventListener("click", () => {
     operatorClear();
+    buttonClearsDisplay();
     inputNumber(8);
 });
 nine.addEventListener("click", () => {
     operatorClear();
+    buttonClearsDisplay();
     inputNumber(9);
 });
 dot.addEventListener("click", () => {
     operatorClear();
+    buttonClearsDisplay();
     inputNumber(".");
 });
 
 clear.addEventListener("click", () => {
     displayValue = "";
+    storedNumber = "";
     display.innerText = "";
+    plus.style.background = "white"
+    take.style.background = "white"
+    times.style.background = "white"
+    divided.style.background = "white"
+    difference.style.background = "white"
 });
 
 plus.addEventListener("click", () => {
-    operation = "";
+    operateEquals();
+    correctOperator(add);
     storedNumber = displayValue;
-    operation = add;
     displayValue = "";
-    display.innerText = "+";
+    plus.style.background = "#e6e6e6";
 });
 
 take.addEventListener("click", () => {
-    operation = "";
+    operateEquals();
+    correctOperator(subtract);
     storedNumber = displayValue;
-    operation = subtract;
     displayValue = "";
-    display.innerText = "-";
+    take.style.background = "#e6e6e6";
 });
 
 times.addEventListener("click", () => {
-    operation = "";
+    operateEquals();
+    correctOperator(multiply);
     storedNumber = displayValue;
-    operation = multiply;
     displayValue = "";
-    display.innerText = "x";
+    times.style.background = "#e6e6e6";
 });
 
 divided.addEventListener("click", () => {
-    operation = "";
+    operateEquals();
+    correctOperator(divide);
     storedNumber = displayValue;
-    operation = divide;
     displayValue = "";
-    display.innerText = "/";
+    divided.style.background = "#e6e6e6";
 });
 
 difference.addEventListener("click", () => {
-    operation = "";
+    operateEquals();
+    correctOperator(remainder);
     storedNumber = displayValue;
-    operation = remainder;
     displayValue = "";
-    display.innerText = "%";
+    difference.style.background = "#e6e6e6";
 });
 
 equals.addEventListener("click", () => {
     display.innerText = 
-    operate(operation, parseInt(storedNumber), parseInt(displayValue));
+        operate(operation, parseInt(storedNumber), parseInt(displayValue));
     storedNumber = "";
     displayValue = "";
 });
+
+function buttonClearsDisplay() {
+    if (!displayValue) {
+        return display.innerText = "";
+    }
+};
+
+function operateEquals() {
+    if (storedNumber > 0) {
+        display.innerText = 
+            operate(operation, parseInt(storedNumber), parseInt(displayValue));
+        displayValue = display.innerText;
+    };
+};
+
+function correctOperator(operator) {
+    operation = operator;
+}
