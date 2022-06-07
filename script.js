@@ -33,6 +33,9 @@ function operate(operator, num1, num2) {
 };
 
 function inputNumber(number) {
+    if (display.innerText.length > 8){
+        return;
+    };
     displayValue += number;
     return display.innerText += number;
 }
@@ -129,6 +132,7 @@ dot.addEventListener("click", () => {
 });
 
 clear.addEventListener("click", () => {
+    operation = "";
     displayValue = "";
     storedNumber = "";
     display.innerText = "";
@@ -139,52 +143,68 @@ clear.addEventListener("click", () => {
     difference.style.background = "white"
 });
 
+
 plus.addEventListener("click", () => {
     operateEquals();
     correctOperator(add);
+    invalidAnswer();
     storedNumber = displayValue;
     displayValue = "";
-    plus.style.background = "#e6e6e6";
+    plus.style.background = "lightgreen";
 });
 
 take.addEventListener("click", () => {
     operateEquals();
     correctOperator(subtract);
+    invalidAnswer();
     storedNumber = displayValue;
     displayValue = "";
-    take.style.background = "#e6e6e6";
+    take.style.background = "lightgreen";
 });
 
 times.addEventListener("click", () => {
     operateEquals();
     correctOperator(multiply);
+    invalidAnswer();
     storedNumber = displayValue;
     displayValue = "";
-    times.style.background = "#e6e6e6";
+    times.style.background = "lightgreen";
 });
 
 divided.addEventListener("click", () => {
     operateEquals();
     correctOperator(divide);
+    invalidAnswer();
     storedNumber = displayValue;
     displayValue = "";
-    divided.style.background = "#e6e6e6";
+    divided.style.background = "lightgreen";
 });
 
 difference.addEventListener("click", () => {
     operateEquals();
     correctOperator(remainder);
+    invalidAnswer();
     storedNumber = displayValue;
     displayValue = "";
-    difference.style.background = "#e6e6e6";
+    difference.style.background = "lightgreen";
 });
 
+
 equals.addEventListener("click", () => {
+    if (!operation) {
+        return
+    };
     display.innerText = 
         operate(operation, parseInt(storedNumber), parseInt(displayValue));
+    if (display.innerText.length > 8) { 
+        display.innerText = parseInt(displayValue).toExponential(2);
+    };
+    invalidAnswer();
+    operation = "";
     storedNumber = "";
     displayValue = "";
 });
+
 
 function buttonClearsDisplay() {
     if (!displayValue) {
@@ -197,9 +217,19 @@ function operateEquals() {
         display.innerText = 
             operate(operation, parseInt(storedNumber), parseInt(displayValue));
         displayValue = display.innerText;
+
+        if (display.innerText.length > 8){
+            display.innerText = parseInt(displayValue).toExponential(2);
+        };
     };
 };
 
 function correctOperator(operator) {
-    operation = operator;
-}
+    return operation = operator;
+};
+
+function invalidAnswer() {
+    if (display.innerText == Infinity) {
+        return display.innerText = "Yeah, nah"
+    }
+};
