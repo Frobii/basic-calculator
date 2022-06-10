@@ -66,6 +66,7 @@ const nine = document.querySelector(".nine");
 const dot = document.querySelector(".dot");
 
 const clear = document.querySelector(".clear");
+const backspace = document.querySelector(".delete")
 
 const plus = document.querySelector(".add");
 const take = document.querySelector(".subtract");
@@ -128,7 +129,11 @@ nine.addEventListener("click", () => {
 dot.addEventListener("click", () => {
     operatorClear();
     buttonClearsDisplay();
-    inputNumber(".");
+    if (display.innerText.split(".").length -1 < 1) { 
+        inputNumber(".");
+    } else {
+        return
+    }
 });
 
 clear.addEventListener("click", () => {
@@ -141,6 +146,11 @@ clear.addEventListener("click", () => {
     times.style.background = "white"
     divided.style.background = "white"
     difference.style.background = "white"
+});
+
+backspace.addEventListener("click", () => {
+    displayValue = displayValue.slice(0, -1);
+    display.innerText = display.innerText.slice(0, -1);
 });
 
 
@@ -177,6 +187,7 @@ divided.addEventListener("click", () => {
     invalidAnswer();
     storedNumber = displayValue;
     displayValue = "";
+    
     divided.style.background = "lightgreen";
 });
 
@@ -194,11 +205,20 @@ equals.addEventListener("click", () => {
     if (!operation) {
         return
     };
-    display.innerText = 
-        operate(operation, parseInt(storedNumber), parseInt(displayValue));
-    if (display.innerText.length > 8) { 
-        display.innerText = parseInt(displayValue).toExponential(2);
-    };
+    if (display.innerText.split(".").length -1 == 1 ||
+        storedNumber.split(".").length -1 == 1) {
+            display.innerText = 
+                operate(operation, parseFloat(storedNumber), parseFloat(displayValue));
+            if (display.innerText.length > 8) { 
+                display.innerText = parseFloat(displayValue).toExponential(2);
+            };
+    } else {
+        display.innerText = 
+            operate(operation, parseInt(storedNumber), parseInt(displayValue));
+        if (display.innerText.length > 8) { 
+            display.innerText = parseInt(displayValue).toExponential(2);
+        };
+    }
     invalidAnswer();
     operation = "";
     storedNumber = "";
@@ -214,12 +234,22 @@ function buttonClearsDisplay() {
 
 function operateEquals() {
     if (storedNumber > 0) {
-        display.innerText = 
-            operate(operation, parseInt(storedNumber), parseInt(displayValue));
-        displayValue = display.innerText;
+        if (display.innerText.split(".").length -1 == 1 ||
+        storedNumber.split(".").length -1 == 1 ||
+        displayValue.split(".").length -1 == 1 ) {
+            display.innerText = 
+                operate(operation, parseFloat(storedNumber), parseFloat(displayValue));
+            if (display.innerText.length > 8) { 
+                display.innerText = parseFloat(displayValue).toExponential(2);
+            };
+        } else {
+            display.innerText = 
+                operate(operation, parseInt(storedNumber), parseInt(displayValue));
+            displayValue = display.innerText;
 
-        if (display.innerText.length > 8){
-            display.innerText = parseInt(displayValue).toExponential(2);
+            if (display.innerText.length > 8){
+                display.innerText = parseInt(displayValue).toExponential(2);
+            };
         };
     };
 };
