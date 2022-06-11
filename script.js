@@ -41,11 +41,11 @@ function inputNumber(number) {
 }
 
 function operatorClear() {
-    plus.style.background = "#ffffff";
-    take.style.background = "#ffffff";
-    times.style.background = "#ffffff";
-    divided.style.background = "#ffffff";
-    difference.style.background = "#ffffff";
+    plus.style.background = "#80c24669";
+    take.style.background = "#80c24669";
+    times.style.background = "#80c24669";
+    divided.style.background = "#80c24669";
+    difference.style.background = "#80c24669";
 };
 
 const display = document.querySelector(".calcDisplay")
@@ -141,11 +141,11 @@ clear.addEventListener("click", () => {
     displayValue = "";
     storedNumber = "";
     display.innerText = "";
-    plus.style.background = "white"
-    take.style.background = "white"
-    times.style.background = "white"
-    divided.style.background = "white"
-    difference.style.background = "white"
+    plus.style.background = "#80c24669"
+    take.style.background = "#80c24669"
+    times.style.background = "#80c24669"
+    divided.style.background = "#80c24669"
+    difference.style.background = "#80c24669"
 });
 
 backspace.addEventListener("click", () => {
@@ -160,7 +160,7 @@ plus.addEventListener("click", () => {
     invalidAnswer();
     storedNumber = displayValue;
     displayValue = "";
-    plus.style.background = "lightgreen";
+    plus.style.background = "#80c246";
 });
 
 take.addEventListener("click", () => {
@@ -169,7 +169,7 @@ take.addEventListener("click", () => {
     invalidAnswer();
     storedNumber = displayValue;
     displayValue = "";
-    take.style.background = "lightgreen";
+    take.style.background = "#80c246";
 });
 
 times.addEventListener("click", () => {
@@ -178,7 +178,7 @@ times.addEventListener("click", () => {
     invalidAnswer();
     storedNumber = displayValue;
     displayValue = "";
-    times.style.background = "lightgreen";
+    times.style.background = "#80c246";
 });
 
 divided.addEventListener("click", () => {
@@ -188,7 +188,7 @@ divided.addEventListener("click", () => {
     storedNumber = displayValue;
     displayValue = "";
     
-    divided.style.background = "lightgreen";
+    divided.style.background = "#80c246";
 });
 
 difference.addEventListener("click", () => {
@@ -197,7 +197,7 @@ difference.addEventListener("click", () => {
     invalidAnswer();
     storedNumber = displayValue;
     displayValue = "";
-    difference.style.background = "lightgreen";
+    difference.style.background = "#80c246";
 });
 
 
